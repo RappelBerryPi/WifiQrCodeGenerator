@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "whwdlVK+0wrI+goSJaJ4dcn9jpANkucynqE4ZPdrmhYEGiw5loSzDPHiAyOENDzo/YbtcYfA8Lh9p/9tno7gQg==",
+  "success": true,
+  "projectFilePath": "D:\\Projects\\WifiQrCodeGenerator\\WifiQrCodeGenerator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\leppa\\.nuget\\packages\\microsoft.csharp\\4.4.1\\microsoft.csharp.4.4.1.nupkg.sha512",
+    "C:\\Users\\leppa\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\leppa\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\leppa\\.nuget\\packages\\qrcoder\\1.4.1\\qrcoder.1.4.1.nupkg.sha512",
+    "C:\\Users\\leppa\\.nuget\\packages\\system.commandline\\2.0.0-beta1.21308.1\\system.commandline.2.0.0-beta1.21308.1.nupkg.sha512",
+    "C:\\Users\\leppa\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
+    "C:\\Users\\leppa\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512"
+  ],
+  "logs": []
+}
