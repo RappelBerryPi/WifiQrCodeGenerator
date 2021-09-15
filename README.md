@@ -1,0 +1,2 @@
+# WifiQrCodeGenerator
+.net WifiQrCodeGenerator
