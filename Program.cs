@@ -24,23 +24,19 @@ namespace WifiQrCodeGenerator {
                     IsRequired = true
                 }
             };
-            rootCommand.Handler = CommandHandler.Create<FileInfo, string, string, PayloadGenerator.WiFi.Authentication>(CreateQRCode);
+            rootCommand.Handler = CommandHandler.Create<FileInfo, string, string, PayloadGenerator.WiFi.Authentication>(CreateQrCode);
             return rootCommand.Invoke(args);
         }
 
-        public static void CreateQRCode(FileInfo outputFile, string ssid, string password, PayloadGenerator.WiFi.Authentication AuthenticationMethod) {
-            Console.WriteLine(outputFile.Name);
-            Console.WriteLine(password);
-            Console.WriteLine(ssid);
-            Console.WriteLine(AuthenticationMethod);
-            var       QrCodeWifiGenerator = new PayloadGenerator.WiFi(ssid, password, AuthenticationMethod);
+        public static void CreateQrCode(FileInfo outputFile, string ssid, string password, PayloadGenerator.WiFi.Authentication authenticationMethod) {
+            var       qrCodeWifiGenerator = new PayloadGenerator.WiFi(ssid, password, authenticationMethod);
             var       qrGenerator         = new QRCodeGenerator();
-            var       data                = qrGenerator.CreateQrCode(QrCodeWifiGenerator.ToString(), QRCodeGenerator.ECCLevel.Q);
+            var       data                = qrGenerator.CreateQrCode(qrCodeWifiGenerator.ToString(), QRCodeGenerator.ECCLevel.Q);
             var       qrCode              = new QRCode(data);
             var       qrCodeImage         = qrCode.GetGraphic(20);
             using var stream              = new MemoryStream();
             var       outputFormat        = GetOutputFileFormat(outputFile);
-            qrCodeImage.Save(outputFile.Name, outputFormat);
+            qrCodeImage.Save(outputFile.FullName, outputFormat);
         }
 
 
