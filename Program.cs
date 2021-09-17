@@ -10,17 +10,29 @@ namespace WifiQrCodeGenerator {
         public static int Main(string[] args) {
             var rootCommand = new RootCommand
             {
-                new Option<FileInfo>(new[] { "-o", "--output-file" }),
-                new Option<string>(new[] { "-s", "--ssid" }),
-                new Option<string>(new[] { "-p", "--password" }),
-                new Option<PayloadGenerator.WiFi.Authentication>(new[] { "-a", "--authentication-method" })
+                new Option<FileInfo>(new[] { "--output-file", "-o" }, () => new FileInfo("output.png"), "The output file."),
+                new Option<string>(new[] { "--ssid", "-s" }, "The network name.")
+                {
+                    IsRequired = true
+                },
+                new Option<string>(new[] { "--password", "-p" }, "The wifi Password.")
+                {
+                    IsRequired = true
+                },
+                new Option<PayloadGenerator.WiFi.Authentication>(new[] { "--authentication-method", "-a" }, "The authentication method for the wifi SSID.")
+                {
+                    IsRequired = true
+                }
             };
             rootCommand.Handler = CommandHandler.Create<FileInfo, string, string, PayloadGenerator.WiFi.Authentication>(CreateQRCode);
-
             return rootCommand.Invoke(args);
         }
 
         public static void CreateQRCode(FileInfo outputFile, string ssid, string password, PayloadGenerator.WiFi.Authentication AuthenticationMethod) {
+            Console.WriteLine(outputFile.Name);
+            Console.WriteLine(password);
+            Console.WriteLine(ssid);
+            Console.WriteLine(AuthenticationMethod);
             var       QrCodeWifiGenerator = new PayloadGenerator.WiFi(ssid, password, AuthenticationMethod);
             var       qrGenerator         = new QRCodeGenerator();
             var       data                = qrGenerator.CreateQrCode(QrCodeWifiGenerator.ToString(), QRCodeGenerator.ECCLevel.Q);
